@@ -31,6 +31,7 @@ public:
 		m_year = 0;
 		m_run = 0;
 	}
+
 	void setfiona(char fiona[34])	{	strcpy(m_fiona, fiona);		}
 	void setbusnum(int busnum)		{	m_bus_num = busnum;			}
 	void setracenum(int racenum)	{	m_race_num = racenum;		}
@@ -128,8 +129,8 @@ int main()
 			if (count == 0) 
 			{
 				cout << "Подходящих элементов не найдено" << endl;
-				count = 0;
 			}
+			count = 0;
 			system("pause");
 			system("cls");
 		}
@@ -154,8 +155,8 @@ int main()
 			if (count == 0)
 			{
 				cout << "Подходящих элементов не найдено" << endl;
-				count = 0;
 			}
+			count = 0;
 			system("pause");
 			system("cls");
 		}
@@ -179,8 +180,8 @@ int main()
 			if (count == 0)
 			{
 				cout << "Подходящих элементов не найдено" << endl;
-				count = 0;
 			}
+			count = 0;
 			system("pause");
 			system("cls");
 		}
