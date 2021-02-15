@@ -1,0 +1,4 @@
+G:\oop\ConsoleApplication3\Debug\ConsoleApplication3.exe
+G:\oop\ConsoleApplication3\Debug\ConsoleApplication3.pdb
+X:\Универ\Github\Лаба 1\Debug\ConsoleApplication3.exe
+X:\Универ\Github\Лаба 1\Debug\ConsoleApplication3.pdb
