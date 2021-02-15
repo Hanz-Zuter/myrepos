@@ -15,7 +15,6 @@ private:
 	 char m_label[20];
 	 int m_year;
 	 int m_run;
-	 bus* next;
 public:
 	bus(char fiona[34], int bus_num, int race_num, char label[20], int year, int run)
 	{
@@ -48,65 +47,67 @@ public:
 	char * getlabel()				{	return (m_label);			}
 	int getyear()					{	return (m_year);			}
 	int getrun()					{	return (m_run);				}
-
-	void setnext(bus*p)				{	next = p;					}
-//	void sethead(bus* p)			{	head = p;					}
-	bus* getnext()					{	return next;				}
-//	bus* gethead()					{	return(head);				}
 };
 
 
 int main() 
 {
 	setlocale(LC_ALL, "Rus");
-
+	cout << "Введите номер элемента";
+	int n;
+	cin >> n;
+	bus* massive;
+	massive = new bus[n];
 	while (true) 
 	{
-		bus* mass;
-		cout << "Введите номер элемента";
-		int n;
-		cin >> n;
-		bus* massive = new bus[n];
-
-		
 		int choose;
 		cin >> choose;
-		if (choose == 1)	//создание элемента
+		if (choose == 1)	//заполнение массива
 		{
-			while (true)
+				char temp1[20];
+				int temp2;
+
+				for (int i = 0; i < n; i++)
+				{
+					massive[i] = bus();
+					cout << "Введите ФИО водителя: ";
+					cin >> temp1;
+					massive[i].setfiona(temp1);
+					cout << endl << "Введите номер автобуса: ";
+					cin >> temp2;
+					massive[i].setbusnum(temp2);
+					cout << endl << "Введите номер рейса: ";
+					cin >> temp2;
+					massive[i].setracenum(temp2);
+					cout << endl << "Введите марку автобуса: ";
+					cin >> temp1;
+					massive[i].setlabel(temp1);
+					cout << endl << "Введите год: ";
+					cin >> temp2;
+					massive[i].setyear(temp2);
+					cout << endl << "Введите пробег: ";
+					cin >> temp2;
+					massive[i].setrun(temp2);
+				}
+			
+			
+		}
+		if (choose == 2) 
+		{
+			for (int i = 0; i < n; i++)
 			{
-				char temp1[20];
-				int temp2;
-				bus*element = &massive[0];
-				char temp1[20];
-				int temp2;
-				cout << "Введите ФИО водителя: ";
-				cin >> temp1;
-				element->setfiona(temp1);
-				cout << endl << "Введите номер автобуса: ";
-				cin >> temp2;
-				element->setbusnum(temp2);
-				cout << endl << "Введите номер рейса: ";
-				cin >> temp2;
-				element->setracenum(temp2);
-				cout << endl << "Введите марку автобуса: ";
-				cin >> temp1;
-				element->setlabel(temp1);
-				cout << endl << "Введите год: ";
-				cin >> temp2;
-				element->setyear(temp2);
-				cout << endl << "Введите пробег: ";
-				cin >> temp2;
-				element->setrun(temp2);
-
-
-
-				temp2 = element->getrun();
-				cout << temp2;
-				break;
+				cout << "ФИО водителя: " << massive[i].getfiona();
+				cout << endl << "Номер автобуса: " << massive[i].getbusnum();
+				cout << endl << "Номер рейса: " << massive[i].getracenum();
+				cout << endl << "Марка автобуса: " << massive[i].getlabel();
+				cout << endl << "Год: "<< massive[i].getyear();
+				cout << endl << "Пробег: " << massive[i].getrun();
+				cout << endl;
+				cout << endl;
 			}
-			
-			
+
+
+
 		}
 	}
 
