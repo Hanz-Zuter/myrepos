@@ -3,9 +3,6 @@
 #include <string>
 using namespace std;
 
-int alreadyset = 0;
-
-
 class bus //Фамилия и инициалы водителя, Номер автобуса, Номер маршрута, Марка, Год начала эксплуатации, Пробег.
 {
 private:
@@ -53,13 +50,14 @@ public:
 int main() 
 {
 	setlocale(LC_ALL, "Rus");
-	cout << "Введите номер элемента";
-	int n;
+	cout << "Введите количество элементов >> ";
+	int n, count = 0;
 	cin >> n;
 	bus* massive;
 	massive = new bus[n];
 	while (true) 
 	{
+		cout << "1. Заполнить" << endl << "2. Вывести" << endl << "3. Список автобусов для заданного номера маршрута" << endl <<"4. Список автобусов, которые эксплуатируются больше 10 лет" << endl <<"5. Список автобусов, пробег у которых больше 10 000 км" << endl << "6. Выход" << endl << ">> ";
 		int choose;
 		cin >> choose;
 		if (choose == 1)	//заполнение массива
@@ -70,7 +68,7 @@ int main()
 				for (int i = 0; i < n; i++)
 				{
 					massive[i] = bus();
-					cout << "Введите ФИО водителя: ";
+					cout << "Введите ФИО водителя " << i + 1 << ": ";
 					cin >> temp1;
 					massive[i].setfiona(temp1);
 					cout << endl << "Введите номер автобуса: ";
@@ -88,6 +86,7 @@ int main()
 					cout << endl << "Введите пробег: ";
 					cin >> temp2;
 					massive[i].setrun(temp2);
+					cout << endl;
 				}
 			
 			
@@ -96,7 +95,7 @@ int main()
 		{
 			for (int i = 0; i < n; i++)
 			{
-				cout << "ФИО водителя: " << massive[i].getfiona();
+				cout << "ФИО водителя " << i + 1 << ": " << massive[i].getfiona();
 				cout << endl << "Номер автобуса: " << massive[i].getbusnum();
 				cout << endl << "Номер рейса: " << massive[i].getracenum();
 				cout << endl << "Марка автобуса: " << massive[i].getlabel();
@@ -105,18 +104,91 @@ int main()
 				cout << endl;
 				cout << endl;
 			}
-
-
-
+		}
+		if (choose == 3) 
+		{
+			int t;
+			cout << "Введите номер маршрута " << endl << ">> ";
+			cin >> t;
+			for (int i = 0; i < n; i++)
+			{
+				if (massive[i].getracenum() == t) 
+				{
+					count++;
+					cout << "ФИО водителя " << i + 1 << ": " << massive[i].getfiona();
+					cout << endl << "Номер автобуса: " << massive[i].getbusnum();
+					cout << endl << "Номер рейса: " << massive[i].getracenum();
+					cout << endl << "Марка автобуса: " << massive[i].getlabel();
+					cout << endl << "Год: " << massive[i].getyear();
+					cout << endl << "Пробег: " << massive[i].getrun();
+					cout << endl;
+					cout << endl;
+				}
+			}
+			if (count == 0) 
+			{
+				cout << "Подходящих элементов не найдено" << endl;
+				count = 0;
+			}
+			system("pause");
+			system("cls");
+		}
+		if (choose == 4)
+		{
+			int god = 2021;
+			for (int i = 0; i < n; i++)
+			{
+				if (god - massive[i].getyear() > 10 )
+				{
+					count++;
+					cout << "ФИО водителя " << i + 1 << ": " << massive[i].getfiona();
+					cout << endl << "Номер автобуса: " << massive[i].getbusnum();
+					cout << endl << "Номер рейса: " << massive[i].getracenum();
+					cout << endl << "Марка автобуса: " << massive[i].getlabel();
+					cout << endl << "Год: " << massive[i].getyear();
+					cout << endl << "Пробег: " << massive[i].getrun();
+					cout << endl;
+					cout << endl;
+				}
+			}
+			if (count == 0)
+			{
+				cout << "Подходящих элементов не найдено" << endl;
+				count = 0;
+			}
+			system("pause");
+			system("cls");
+		}
+		if (choose == 5)
+		{
+			for (int i = 0; i < n; i++)
+			{
+				if (massive[i].getrun() > 10000)
+				{
+					count++;
+					cout << "ФИО водителя " << i + 1 << ": " << massive[i].getfiona();
+					cout << endl << "Номер автобуса: " << massive[i].getbusnum();
+					cout << endl << "Номер рейса: " << massive[i].getracenum();
+					cout << endl << "Марка автобуса: " << massive[i].getlabel();
+					cout << endl << "Год: " << massive[i].getyear();
+					cout << endl << "Пробег: " << massive[i].getrun();
+					cout << endl;
+					cout << endl;
+				}
+			}
+			if (count == 0)
+			{
+				cout << "Подходящих элементов не найдено" << endl;
+				count = 0;
+			}
+			system("pause");
+			system("cls");
+		}
+		if (choose == 6) 
+		{
+			break;
 		}
 	}
-
-
-
-
-
-
-
 
 	return 0;
 }
